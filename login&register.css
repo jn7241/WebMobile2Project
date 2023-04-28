@@ -1,0 +1,14 @@
+ .container{
+             justify-content: center;
+             text-align: center;
+             align-items: center;
+         }
+input{
+	padding: 5px;
+}
+.error{
+       background-color: yellow;
+       color: red;
+       width: 300px;
+       margin: 0 auto;
+}

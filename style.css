@@ -1,0 +1,200 @@
+/* Styles for the header section */
+header {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav li:first-child {
+  margin-left: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* Styles for the main section */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 3em;
+  margin: 0;
+}
+
+p {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Styles for the featured movies section */
+.featured-movies {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.featured-movies h3 {
+  font-size: 2.5em;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.movie-card img {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.movie-card h4 {
+  font-size: 1.5em;
+  margin: 0;
+  text-align: center;
+}
+
+.movie-card p {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* Styles for the showtimes section */
+.showtimes {
+  margin: 50px 0;
+}
+
+.showtimes table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.showtimes th,
+.showtimes td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.showtimes th {
+  background-color: #222;
+  color: #fff;
+}
+
+.showtimes td:first-child {
+  text-align: left;
+}
+
+.showtimes tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Styles for the special offers section */
+.special-offers {
+  background-color: #ffcc00;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.special-offers h3 {
+  font-size: 2.5em;
+  margin: 0;
+  text-align: center;
+}
+
+.special-offers ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.special-offers li {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Styles for the customer testimonials section */
+.customer-testimonials {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.customer-testimonials blockquote {
+  font-size: 1.2em;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.customer-testimonials blockquote:before {
+  content: "\201C";
+  font-size: 4em;
+  display: block;
+  margin-bottom: 20px;
+  color: #ffcc00;
+}
+
+.customer-testimonials p {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.customer-testimonials cite {
+  font-size: 1.2em;
+  font-style: normal;
+  color: #555;
+}
+
+/* Styles for the footer section */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1.2em;
+}
