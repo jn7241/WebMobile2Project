@@ -33,7 +33,7 @@ if (isset($_POST["register"])) { //array_key_exists("register", $_POST)
         $RegisterError .= "Password does not match <br>";
      }
      if ($RegisterError) { //If form has errors other than unmatched passwords
-        $RegisterError = "<b>There were error(s) in your form!</b> <br>".$error;
+        $RegisterError = "<b>There were error(s) in your form!</b> <br>";
      }  else {
        
     

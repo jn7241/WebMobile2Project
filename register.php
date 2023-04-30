@@ -37,7 +37,7 @@
 
  <div class="container">
      <h1>User Registration System</h1>
-     <h4><a href="loggedInPage.php">Management system</a></h4>
+     <h4><a href="registerStaff.php">Staff Registration Page</a></h4>
      
       
      <div> <!--form div-->
