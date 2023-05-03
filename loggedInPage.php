@@ -4,45 +4,59 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Page</title></head>
+<title>Booking System</title></head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <body>
 <?php include('header.html');?>
+<style>
+
+</style>
 <?php
+session_start();
+if(!isset($_SESSION['loginId'])){
+    header('location: login.php');
+}
+// Connection creation/Checking
+$database = mysqli_connect("localhost", "root", "", "cinema");
 
-// Create connection
-$conn = mysqli_connect("localhost", "root", "", "cinema");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if($database === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
 // Query the showtimes table
+echo "<h3> Hello, ". $_SESSION['loginName']. ".  Here are the showtimes: </h3>";
 $sql = "SELECT * FROM showtimes";
-$result = $conn->query($sql);
+if($result = mysqli_query($database, $sql)){
+    if(mysqli_num_rows($result) > 0){
+echo "<table class = 'showtimes'>";
+echo "<tr><th>id</th><th>title</th><th>theater</th><th>start time</th><th>end time</th><th>price</th><th>location</th><th>Book</th></tr>";
 
-// Check if any results were returned
-if ($result->num_rows > 0) {
-    // Display the results in a table
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Film</th><th>Theater</th><th>Start Time</th><th>End Time</th><th>Price</th><th>Location</th></tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["id"]."</td><td>".$row["title"]."</td><td>".$row["theater"]."</td><td>".$row["start_time"]."</td><td>".$row["end_time"]."</td><td>".$row["price"]."</td><td>".$row["location"]."</td><td><form method='post' action='bookings.php'><input type='hidden' name='showtime_id' value='".$row["id"]."'><input type='submit' name='submit' value='Book'></form></td></tr>";
+
+while($row = mysqli_fetch_array($result)){
+    $id_number = $row['id']; //works
+    echo "<td>" . $row['id'] . "</td>";
+    echo "<td>" . $row['title'] . "</td>";
+    echo "<td>" . $row['theater'] . "</td>";
+    echo "<td>" . $row['start_time'] . "</td>";
+    echo "<td>" . $row['end_time'] . "</td>";
+    echo "<td>" . $row['price'] . "</td>";
+    echo "<td>" . $row['location'] . "</td>";
+    echo "<td><form method = 'POST' action = 'BookingProcessing.php'><input style = 'color:green;background-color:green; max-width:20px;' type='submit' name ='add' value='$id_number'/></form></td>";
+    echo "</tr>";
     }
-    echo "</table>";
-} else {
-    echo "No results found.";
-}
 
-// Close the database connection
-$conn->close();
+echo "</table>";
 
+    }
+    else{
+        echo "No records matching your query were found.";
+        }
+        } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        }
 ?>
 
 <?php include('footer.html');?>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<body>
+

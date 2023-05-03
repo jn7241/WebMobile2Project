@@ -18,8 +18,7 @@
   ?>
  <div class="container">
      <h1> User Log In System</h1>
- 
-     <h4><a href="loginStaff.php">Staff Log In Page</a></h4>
+
                    
      <div> <!--form div-->
      <form method="POST">

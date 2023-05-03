@@ -99,7 +99,7 @@ if (isset($_POST["login"])) {
  
                     
                     $_SESSION['loginId'] = $userRow['id'];  
- 
+                    $_SESSION['loginName'] = $userRow['name'];
                      
                     header("Location: loggedInPage.php");
  
