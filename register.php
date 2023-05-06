@@ -1,5 +1,3 @@
-<!-- PHP command to link server.php file with registration form  -->
-
  
  <!DOCTYPE html>
  <html lang="en">
@@ -37,8 +35,6 @@
 
  <div class="container">
      <h1>User Registration System</h1>
-     <h4><a href="registerStaff.php">Staff Registration Page</a></h4>
-     
       
      <div> <!--form div-->
      <form method="POST">
@@ -59,7 +55,7 @@
        <!--<label for="checkbox">Stay logged in</label>-->
        <!--<input type="checkbox" name="stayLoggedIn" id="checkbox" value="1"> <br><br>-->
       <!--The 2 commented lines are useful if you want to implement a cookie feature-->
-       <input type="submit" name="register" value="Sign Up">
+       <input class = 'submit_button' type="submit" name="register" value="Sign Up">
 	   
        <p >Have an account already? <a href="login.php">Log In</a></p>
       </form>

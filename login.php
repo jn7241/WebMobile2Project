@@ -40,8 +40,8 @@
         <!--<label for="checkbox">Stay logged in</label>-->
        <!--<input type="checkbox" name="stayLoggedIn" id="checkbox" value="1"> <br><br>-->
       <!--The 2 commented lines are useful if you want to implement a cookie feature-->
-     <br><br>
-       <input type="submit" name="login" value="Log In">
+     
+       <input class = 'submit_button' type="submit" name="login" value="Log In">
 
        <p>Not a registered user?  <a href="register.php"> Create Account</a></p>
 	   

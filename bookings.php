@@ -32,18 +32,18 @@ if($database === false){
 if((preg_match($_SESSION['staffMail'], $_SESSION['email'])) == 1){
 
     
-    echo "<h2>Staff management page</h2><br><h4>type all to see everything. If you want default editing after searching, go down.<h4>";
+    echo "<h2>Staff management page</h2><br><h4>type all to see everything. If you want default editing after searching, go down. If you have clicked an option, and want to go back, <br> use the navigation bar instead of the forward and back buttons.<h4>";
     echo "
     <form method = 'POST'>
     <input type = 'text' name = 'specifyUser' label = 'specify a user'>
      
-    <input type = 'submit' name = 'submitUser' value = 'manage users'>
+    <input class = 'submit_button' style = 'padding:0px 0px; font-size:12px;' type = 'submit' name = 'submitUser' value = 'manage users'>
     </form>
     <br>
     <form method = 'POST'>
     <input type = 'text' name = 'specifyLocation' label = 'specify a user'>
      
-    <input type = 'submit' name = 'submitLocation' value = 'manage location' placeholder ='all'>
+    <input class = 'submit_button' style = 'padding:0px 0px; font-size:12px;' type = 'submit' name = 'submitLocation' value = 'manage location' placeholder ='all'>
     </form>
         ";
 
@@ -165,7 +165,7 @@ if((!isset($submitLocation)) && (!isset($submitUser))){
     
     
     while($row = mysqli_fetch_array($result)){
-        $input_array = json_encode([$row['id']]); //conceptually I defined this as an array, so 
+        $input_array = json_encode([$row['id']]); 
         echo "<td>" . $row['id'] . "</td>"; 
         echo "<td>" . $row['name'] . "</td>"; 
         echo "<td>" . $row['title'] . "</td>";

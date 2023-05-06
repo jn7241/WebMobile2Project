@@ -25,35 +25,6 @@ if($database === false){
 }
 if(!isset($_SESSION['loginId'])){
     header('location: login.php');
-    $sql = "SELECT * FROM showtimes";
-if($result = mysqli_query($database, $sql)){
-    if(mysqli_num_rows($result) > 0){
-echo "<table class = 'showtimes'>";
-echo "<tr><th>id</th><th>title</th><th>theater</th><th>start time</th><th>end time</th><th>price</th><th>location</th><th>Book</th></tr>";
-
-
-while($row = mysqli_fetch_array($result)){
-    $id_number = $row['id']; 
-    echo "<td>" . $row['id'] . "</td>";
-    echo "<td>" . $row['title'] . "</td>";
-    echo "<td>" . $row['theater'] . "</td>";
-    echo "<td>" . $row['start_time'] . "</td>";
-    echo "<td>" . $row['end_time'] . "</td>";
-    echo "<td>" . $row['price'] . "</td>";
-    echo "<td>" . $row['location'] . "</td>";
-    echo "<td><form method = 'POST' action = 'BookingProcessing.php'><input style = 'color:green;background-color:green; max-width:20px;'  type='submit' name ='add' value='$id_number'/></form></td>";
-    echo "</tr>";
-    }
-
-echo "</table>";
-
-    }
-    else{
-        echo "No records matching your query were found.";
-        }
-        } else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-        }
 }
 
 

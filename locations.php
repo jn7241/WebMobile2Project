@@ -15,6 +15,8 @@
 		<ul>
 			<li>
 				<h2>Prishtina</h2>
+				<br>
+				<img src = "prishtina.jpg" width = '350px' height = '250px'>
 				<p><strong>Address:</strong> Ulpiana, Rruga e Dibrës, Prishtinë 10000</p>
 				<p><strong>Phone:</strong> +383 49 123 456</p>
 				<p><strong>Opening hours:</strong> Monday-Sunday, 10am-12am</p>
@@ -28,6 +30,8 @@
 			</li>
 			<li>
 					<h2>Prizren</h2>
+					<br>
+					<img src = "prizren.jpg" width = '350px' height = '250px'>
 					<p><strong>Address:</strong> Sheshi i Lumbardhit, Prizren 20000</p>
 					<p><strong>Phone:</strong> +383 49 123 789</p>
 					<p><strong>Opening hours:</strong> Monday-Sunday, 11am-11pm</p>
