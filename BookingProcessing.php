@@ -1,5 +1,6 @@
 <?php
 if (isset($_POST['add'])){
+    session_start();
     $number = $_POST['add'];
     // Connection creation/Checking
     $database = mysqli_connect("localhost", "root", "", "cinema");
@@ -21,7 +22,7 @@ if (isset($_POST['add'])){
     $checksql = "SELECT * FROM BOOKINGS WHERE id =$number";
     $result = mysqli_query($database, $checksql);
     $row =  mysqli_fetch_array($result);
-    //isset is required in recent versions of php in some cases to check null values:https://stackoverflow.com/questions/59336951/message-trying-to-access-array-offset-on-value-of-type-null 
+    
     if((isset($row['id']) && $number == $row['id'])){
         echo "<link rel='stylesheet' type='text/css' href='style.css'>";
         include("header.html");
@@ -30,7 +31,8 @@ if (isset($_POST['add'])){
         return 0;
     }
     else{
-    $sql2 = "INSERT INTO BOOKINGS VALUES('$number','$title','$theater','$start_time','$end_time','$price','$location')";
+    $name = $_SESSION['loginName'];
+    $sql2 = "INSERT INTO BOOKINGS VALUES('$number', '$name', '$title','$theater','$start_time','$end_time','$price','$location')";
 
     if($result = mysqli_query($database, $sql2)){
         echo "<link rel='stylesheet' type='text/css' href='style.css'>";

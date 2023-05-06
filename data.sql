@@ -1,25 +1,18 @@
--- STAFF TABLE
-
-CREATE TABLE staff (
-    id INT NOT NULL AUTO_INCREMENT,
-    name TEXT,
-    email TEXT,
-    password VARCHAR(255)
-);
-
 -- USERS TABLE
 
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     name TEXT,
     email TEXT,
-    password VARCHAR(255)
+    password VARCHAR(255),
+	PRIMARY KEY(id)
 );
 
 -- BOOKINGS TABLE
 
 CREATE TABLE bookings (
   id INT NOT NULL AUTO_INCREMENT,
+  name TEXT NOT NULL,
   title VARCHAR(255) NOT NULL,
   theater VARCHAR(255) NOT NULL,
   start_time DATETIME NOT NULL,
@@ -83,6 +76,9 @@ CREATE TABLE showtimes (
   FOREIGN KEY (title) REFERENCES films(title),
   FOREIGN KEY (location) REFERENCES cinema_locations(location)
 );
+
+-- INSERTING AN ADMIN (STAFF), since no registering for them was needed
+INSERT INTO users(id,name,email,password) VALUES (1, 'admin', 'admin@starcinema.com', 'cinest/Ar_12');
 -- Insert some showtimes for The Godfather
 INSERT INTO showtimes (title, location, theater, start_time, end_time, price) VALUES
 ('The Godfather', 'Prishtina', 'Main Theater', '2023-05-01 19:00:00', '2023-05-01 22:00:00', 12.99),

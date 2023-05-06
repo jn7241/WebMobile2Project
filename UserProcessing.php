@@ -3,6 +3,7 @@ session_start();
 
 $RegisterError = "";
 $LoginError = "";
+$_SESSION['staffMail']="/@starcinema.com/";
 if (isset($_POST["register"])) { //array_key_exists("register", $_POST)
  
     $database = mysqli_connect("localhost", "root", "", "cinema");
@@ -18,21 +19,24 @@ if (isset($_POST["register"])) { //array_key_exists("register", $_POST)
     $email = mysqli_real_escape_string($database, $_POST['email']);
     $password = mysqli_real_escape_string($database,  $_POST['password']); 
     $repeatPassword = mysqli_real_escape_string($database,  $_POST['repeatPassword']); 
-     
+    
     
     if (!$name) {
       $RegisterError .= "Name is required <br>";
      }
-    if (!$email) {
+    elseif (!$email) {
         $RegisterError .= "Email is required <br>";
      }
-    if (!$password) {
+    elseif (!$password) {
         $RegisterError .= "Password is required <br>";
      } 
-     if ($password !== $repeatPassword) {
+    elseif ($password !== $repeatPassword) {
         $RegisterError .= "Password does not match <br>";
      }
-     if ($RegisterError) { //If form has errors other than unmatched passwords
+    elseif(preg_match($_SESSION['staffMail'], $email) == 1){
+        $RegisterError .= "Staff can't register here!";
+    }
+    elseif ($RegisterError) { //If form has errors other than unmatched passwords
         $RegisterError = "<b>There were error(s) in your form!</b> <br>";
      }  else {
        
@@ -51,9 +55,9 @@ if (isset($_POST["register"])) { //array_key_exists("register", $_POST)
  
                     
                 $_SESSION["registerId"] = mysqli_insert_id($database);  
-                $_SESSION["name"] = $name;
+               
          
-                header("Location: loggedInPage.php");  
+                header("Location: login.php");  
              
                 }
              
@@ -83,7 +87,7 @@ if (isset($_POST["login"])) {
       if (!$password) {
           $LoginError.= "Password is required <br>";
        } 
-      elseif ($LoginError) { //
+      elseif ($LoginError) { 
           $LoginError = "<b>There were error(s) in your form!</b><br>".$LoginError;
        }
     
@@ -96,12 +100,18 @@ if (isset($_POST["login"])) {
             if (isset($userRow)) { //checks if there's an email that is the same
 
                 if ($password === $userRow['password']) { 
- 
-                    
-                    $_SESSION['loginId'] = $userRow['id'];  
+                    $_SESSION['loginId'] = $userRow['id'];  //may get removed    
                     $_SESSION['loginName'] = $userRow['name'];
-                     
-                    header("Location: loggedInPage.php");
+                    $_SESSION['email'] = $userRow['email'];
+                    
+                    if((preg_match($_SESSION['staffMail'], $email)) == 1){
+                        header("Location: bookings.php");
+                    }
+                    
+                    else{
+                        header("Location: loggedInPage.php");
+                    }
+                    
  
                 } else {
                     $LoginError = "Combination of email/password does not match!";

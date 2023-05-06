@@ -98,6 +98,7 @@ p {
 }
 
 /* Styles for the showtimes section */
+
 .showtimes {
   margin: 50px 0;
 }
@@ -126,6 +127,7 @@ p {
 .showtimes tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 
 
 /* Styles for the special offers section */
