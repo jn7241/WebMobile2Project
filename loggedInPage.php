@@ -27,9 +27,9 @@ if(!isset($_SESSION['loginId'])){
     header('location: login.php');
 }
 
-
+if(isset($_SESSION['loginId'])){
 // Query the showtimes table
-echo "<h3> Hello, ". $_SESSION['loginName']. ".  Here are the showtimes: </h3>";
+echo "<h3> Hello, ". $_SESSION['loginName']. ". Here you can book from the showtimes: </h3>";
 $sql = "SELECT * FROM showtimes";
 if($result = mysqli_query($database, $sql)){
     if(mysqli_num_rows($result) > 0){
@@ -59,6 +59,7 @@ echo "</table>";
         } else{
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
+}
 ?>
 
 <?php include('footer.html');?>

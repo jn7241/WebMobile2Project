@@ -1,9 +1,9 @@
 <?php
+ session_start();
 if (!isset($_SESSION['loginId'])){
     header("location: login.php");
 }
 if (isset($_POST['add'])){
-    session_start();
     $number = $_POST['add'];
     // Connection creation/Checking
     $database = mysqli_connect("localhost", "root", "", "cinema");

@@ -17,9 +17,7 @@
 <?php include('header.html');?>
 <?php
 session_start();
-if(!isset($_SESSION['loginId'])){
-    header('location: login.php');
-}
+
 // Connection creation/Checking
 $database = mysqli_connect("localhost", "root", "", "cinema");
 
@@ -27,7 +25,7 @@ if($database === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-
+if(isset($_SESSION['loginId'])){
 //Staff booking implementation
 if((preg_match($_SESSION['staffMail'], $_SESSION['email'])) == 1){
 
@@ -243,6 +241,10 @@ echo "want to cancel a booking? Contact a staff member with this email: admin@st
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
     }
+}
+if(!isset($_SESSION['loginId'])){
+    header('location: login.php');
+}
 ?>
 
 <?php include('footer.html');?>
